@@ -1,0 +1,29 @@
+{
+  "name": "@metarhia/metagram",
+  "version": "1.0.0",
+  "description": "ERD generator for metaschema",
+  "main": "metagram.js",
+  "scripts": {
+    "lint": "eslint .",
+    "fmt-check": "prettier -c \"**/*.js\" \"**/*.json\" \"**/*.md\"",
+    "fmt": "prettier --write \"**/*.js\" \"**/*.json\" \"**/*.md\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/metarhia/metagram.git"
+  },
+  "author": "Dmytro Nechai <nechaido@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/metarhia/metagram/issues"
+  },
+  "homepage": "https://github.com/metarhia/metagram#readme",
+  "devDependencies": {
+    "eslint": "^7.26.0",
+    "eslint-config-metarhia": "^7.0.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.2",
+    "prettier": "^2.3.0"
+  }
+}
