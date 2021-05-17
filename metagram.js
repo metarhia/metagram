@@ -64,10 +64,10 @@ function getPropsAndRelations(model, schema, path = '') {
     } else if (model.entities.has(definition.type)) {
       props.push({
         name,
-        type: definition.many ? 'Id[]' : 'Id',
+        type: 'Id',
         required: definition.required,
       });
-      /* It's possible that we should check whether target is a detaol*/
+      /* It's possible that we should check whether target is a detail*/
       relations.push({
         name,
         source: schema.name,
@@ -83,6 +83,16 @@ function getPropsAndRelations(model, schema, path = '') {
         required: definition.required,
       });
     }
+  }
+
+  for (const [name, index] of Object.entries(schema.indexes)) {
+    if (!index.many) continue;
+    relations.push({
+      name,
+      source: schema.name,
+      target: index.many,
+      many: true,
+    });
   }
 
   return { props, relations };
