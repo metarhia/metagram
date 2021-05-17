@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "ERD generator for metaschema",
   "main": "metagram.js",
+  "files": [
+    "lib/"
+  ],
   "scripts": {
     "lint": "eslint .",
     "fmt-check": "prettier -c \"**/*.js\" \"**/*.json\" \"**/*.md\"",
