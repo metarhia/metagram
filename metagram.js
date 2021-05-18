@@ -34,12 +34,20 @@ const args = yargs
       'Path to the output file. ' +
       'If not provided, output will be printed to stdout',
   })
+  .option('warn', {
+    alias: 'w',
+    type: 'boolean',
+    default: true,
+    describe: 'Print metaschema warnings',
+  })
   .help().argv;
 
 run(args).catch((error) => console.error(error));
 
-async function run({ path, type, output }) {
+async function run({ path, type, output, warn }) {
   const model = await metaschema.Model.load(path);
+  if (warn && model.warnings.length !== 0)
+    model.warnings.forEach((warning) => console.warn(warning));
   const entityInfos = [...model.entities].map(([name, schema]) => ({
     name,
     ...getPropsAndRelations(model, schema),
