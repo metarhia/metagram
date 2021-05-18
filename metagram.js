@@ -40,11 +40,18 @@ const args = yargs
     default: true,
     describe: 'Print metaschema warnings',
   })
+  .option('annotatedRelations', {
+    type: 'boolean',
+    default: true,
+    describe:
+      'Annotate relation with a name of a property ' +
+      'that represents the relation. Only applies to PlantUML',
+  })
   .help().argv;
 
 run(args).catch((error) => console.error(error));
 
-async function run({ path, type, output, warn }) {
+async function run({ path, type, output, warn, annotatedRelations }) {
   const model = await metaschema.Model.load(path);
   if (warn && model.warnings.length !== 0)
     model.warnings.forEach((warning) => console.warn(warning));
@@ -53,7 +60,7 @@ async function run({ path, type, output, warn }) {
     ...getPropsAndRelations(model, schema),
   }));
 
-  const erd = SERIALIZERS[type](entityInfos);
+  const erd = SERIALIZERS[type](entityInfos, { annotatedRelations });
   print(output, erd);
 }
 
