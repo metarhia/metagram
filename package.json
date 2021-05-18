@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "ERD generator for metaschema",
   "main": "metagram.js",
+  "bin": {
+    "metagram": "metagram.js"
+  },
   "files": [
     "lib/"
   ],
@@ -22,6 +25,11 @@
     "url": "https://github.com/metarhia/metagram/issues"
   },
   "homepage": "https://github.com/metarhia/metagram#readme",
+  "dependencies": {
+    "metaschema": "^1.2.2",
+    "metautil": "^3.5.3",
+    "yargs": "^17.0.1"
+  },
   "devDependencies": {
     "eslint": "^7.26.0",
     "eslint-config-metarhia": "^7.0.1",
